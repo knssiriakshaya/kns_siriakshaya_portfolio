@@ -1,0 +1,1299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Interactive Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/4ad276d1a5.js" crossorigin="anonymous"></script>
+  <link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+  
+/>
+
+
+<!-- Devicon -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+
+
+  <style>
+    :root {
+      --primary: #ff4ec7;
+      --secondary: #6c63ff;
+      --text-light: #fff;
+      --text-dark: #222;
+      --bg-gradient: linear-gradient(135deg, #ff4ec7, #6c63ff);
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Roboto', sans-serif;
+      color: var(--text-light);
+      background: var(--bg-gradient);
+      min-height: 100vh;
+    }
+    .nav-header {
+  display: none;
+}
+
+.main-header {
+  display: block;
+}
+
+    header {
+      text-align: center;
+      padding: 2rem 1rem 1rem;
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      margin: 0;
+    }
+
+    header p {
+      margin: 0.5rem 0 0;
+    }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border-top: 1px solid rgba(255,255,255,0.3);
+      border-bottom: 1px solid rgba(255,255,255,0.3);
+      
+    }
+
+    nav button {
+      background: none;
+      border: none;
+      padding: 1rem 1.5rem;
+      cursor: pointer;
+      font-size: 1rem;
+      color: var(--text-light);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    nav button:hover,
+    nav button.active {
+      background: rgba(255,255,255,0.2);
+    }
+
+    main {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 2rem 1rem;
+      text-align: center;
+    }
+
+    .section {
+      display: none;
+      animation: fade 0.5s ease-in-out;
+    }
+
+    .section.active {
+      display: block;
+    }
+
+    h2 {
+      font-size: 2rem;
+      margin: 2rem 0 1rem;
+      border-bottom: 2px solid var(--text-light);
+      display: inline-block;
+      padding-bottom: 0.2rem;
+    }
+
+    p, li {
+      font-size: 1.1rem;
+      line-height: 1.6;
+    }
+    .hire-me-block {
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 10px;
+  padding: 1rem 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.social-links a {
+  text-decoration: none;
+  margin: 0 0.5rem;
+  font-weight: bold;
+}
+
+
+
+    .edu-block {
+      background: rgba(255,255,255,0.1);
+      border: 2px solid rgba(255,255,255,0.3);
+      border-radius: 10px;
+      padding: 1.2rem;
+      margin: 1rem 0;
+      text-align: left;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .edu-block span {
+      display: block;
+      margin-bottom: 0.3rem;
+    }
+
+    .edu-block span:first-child {
+      font-weight: bold;
+      font-size: 1.2rem;
+      color: #ffffff;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    ul li::before {
+      content: " ";
+      margin-right: 0.5rem;
+    }
+
+    .cards {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+.card-icon {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 70px;
+  color: #fefefd;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+}
+.flip-card {
+  background: transparent;
+  width: 400px;
+  height: 300px;
+  perspective: 1000px;
+  cursor: pointer;
+}
+
+.flip-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+.flip-card.flipped .flip-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-front,
+.flip-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  box-sizing: border-box;
+  text-align: center;
+
+  /* ✅ THIS fixes your issue! */
+  backface-visibility: hidden;
+}
+
+.flip-front {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+
+.flip-back {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  transform: rotateY(180deg);
+  backdrop-filter: blur(10px);
+}
+
+.flip-back a {
+  color: #fff;
+  text-decoration: underline;
+}
+.flip-icon {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  font-size: 1.2rem;
+  color: rgba(255, 255, 255, 0.7);
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.flip-card:hover .flip-icon {
+  transform: rotate(180deg);
+}
+/* ✅ Make flip cards fully responsive on small screens */
+.flip-card {
+  width: 100%;
+  max-width: 400px; /* Same look on desktop */
+  height: 300px;
+  perspective: 1000px;
+  cursor: pointer;
+  margin-bottom: 1rem; /* Adds spacing between stacked cards */
+}
+
+/* ✅ Make sure .cards wraps nicely with spacing */
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem; /* Smaller gap looks better on mobile */
+}
+
+
+/* ✅ MOBILE NAV TWEAKS */
+/* MOBILE VERSION FIXED SIDEBAR */
+@media (max-width: 768px) {
+  .nav-header {
+    display: block;
+  }
+
+  .main-header {
+    display: none;
+  }
+
+  nav {
+    flex-direction: column;
+    align-items: flex-start;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 220px; /* fixed width, enough for text */
+    height: 100%;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border-right: 1px solid rgba(255, 255, 255, 0.3);
+    overflow-y: auto;
+    overflow-x: hidden; /* no horizontal scroll */
+    z-index: 999;
+  }
+
+ /* Sidebar header block */
+nav .nav-header {
+  padding: 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  width: 100%;
+}
+
+nav .nav-header p {
+  margin: 0.3rem 0;
+  font-weight: bold;
+  font-size: 1rem;
+  word-break: break-word;
+}
+
+/* Sidebar base */
+nav {
+  flex-direction: column;
+  align-items: flex-start;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 220px; /* fixed width */
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: auto; /* never horizontal scroll in nav */
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border-right: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* Content */
+main {
+  margin-left: 220px; /* same as nav width */
+  max-width: calc(100% - 220px);
+  overflow-x: auto;   /* allow horizontal scroll for wide content */
+  overflow-y: auto;
+  height: 100vh;
+  box-sizing: border-box;
+  padding: 2rem 1rem;
+}
+
+header {
+  display: none; /* Hide separate header on mobile */
+}
+
+/* For tables or wide blocks, wrap in a scrollable div */
+main table {
+  min-width: 600px; /* or whatever you need */
+}
+
+main .scroll-wrapper {
+  overflow-x: auto;
+  width: 100%;
+}
+
+
+  nav button {
+    width: 100%;
+    justify-content: flex-start;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  main {
+    margin-left: 220px; /* same as nav width */
+    max-width: calc(100% - 220px);
+    overflow-x: auto;  /* horizontal scroll for content if needed */
+    overflow-y: auto;  /* vertical scroll for content if needed */
+    height: 100vh;     /* fill viewport height */
+    box-sizing: border-box;
+    padding: 2rem 1rem;
+  }
+
+  header {
+    display: none; /* hide separate header */
+  }
+
+.card-icon {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 70px;
+  color: #fbfbfc;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+}
+
+
+  .cards {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  
+
+  h2 {
+    font-size: 1.5rem;
+  }
+
+  p, li {
+    font-size: 1rem;
+  }
+}
+
+
+.accordion-header {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 0.8rem 1rem;
+  cursor: pointer;
+  font-weight: bold;
+  border-radius: 5px;
+}
+
+.accordion-header .arrow {
+  float: right;
+  transition: transform 0.3s ease;
+  opacity: 0.5; /* 👈 makes it semi-transparent */
+}
+
+
+.accordion.active .accordion-header .arrow {
+  transform: rotate(180deg);
+}
+
+.accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+}
+
+.accordion.active .accordion-content {
+  max-height: 500px; /* or larger if needed */
+}
+
+.plain-list {
+  list-style: none;   /* no bullets */
+  padding: 0;         /* no indent */
+  margin: 0;          /* no margin */
+  text-align: center; /* center the block */
+}
+
+.plain-list li {
+  list-style: none;   /* extra safety */
+  margin: 0.5rem 0;
+  font-size: 1.1rem;
+  display: block;
+  text-align: center; /* align text under heading */
+}
+
+/* For modern browsers that might add markers: */
+.plain-list li::marker {
+  content: none; /* remove bullet/marker */
+}
+
+.certifications-container {
+  width: 100%;
+  max-width: 800px;
+  margin: 2rem auto;
+}
+
+.certification-entry {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  gap: 30px; /* wider gap for clarity */
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255,255,255,0.2);
+  padding: 10px;
+  align-items: center;
+}
+
+.certification-entry div {
+  overflow: auto; /* allow scrolling if needed */
+   text-align: left;
+}
+
+/* Responsive for small screens */
+@media (max-width: 768px) {
+  .certification-entry {
+    grid-template-columns: 1fr;
+    text-align: left;
+    gap: 10px;
+    
+  }
+}
+
+.internship-container {
+  width: 100%;
+  max-width: 900px;
+  margin: 2rem auto;
+}
+
+.internship-entry {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  column-gap: 30px; /* Increased horizontal gap */
+   text-align: left;
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 10px;
+}
+
+@media (max-width: 768px) {
+  .internship-entry {
+    grid-template-columns: 1fr;
+    row-gap: 8px;
+     text-align: left;
+  }
+}
+
+
+
+    
+
+    .skills-stack {
+      max-width: 600px;
+      margin: 2rem auto;
+      text-align: left;
+    }
+
+    .skills-group {
+      margin: 2rem 0;
+    }
+
+    .skill {
+      margin-bottom: 1rem;
+    }
+
+    .skill span {
+      display: block;
+      margin-bottom: 0.3rem;
+    }
+
+    .bar {
+      background: rgba(255,255,255,0.3);
+      border-radius: 10px;
+      height: 10px;
+      overflow: hidden;
+    }
+
+    .bar div {
+      height: 10px;
+      background: #fff;
+      width: 0%;
+      transition: width 1s ease-in-out;
+    }
+
+    a {
+      color: #fff;
+      text-decoration: underline;
+    }
+
+    @keyframes fade {
+      from {opacity: 0;}
+      to {opacity: 1;}
+    }
+
+    @media (max-width: 600px) {
+      nav {
+        flex-direction: column;
+      }
+      .cards {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+
+    .achievement-list {
+  white-space: nowrap;      /* Prevent line breaks */
+  overflow-x: auto;     
+   
+     /* Allow horizontal scroll if needed */
+}
+
+    .info-block {
+  max-width: 400px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.social-links {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.social-links a {
+  color: #fff;
+  text-decoration: underline;
+  margin: 0 0.5rem;
+}
+
+.accordion {
+  margin-bottom: 1rem;
+}
+
+.accordion-header {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 0.8rem 1rem;
+  cursor: pointer;
+  font-weight: bold;
+  border-radius: 5px;
+}
+
+.accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+}
+
+.accordion.active .accordion-content {
+  max-height: 500px; /* adjust as needed */
+}
+
+.accordion-header:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+
+
+
+  </style>
+</head>
+<body>
+  <header class="main-header">
+    <h1>KACHIBHOTLA NAGA SAI SIRIAKSHAYA</h1>
+    <p>Email: knsakki@gmail.com |+91-8341562820</p>
+  </header>
+
+  <nav>
+    <div class="nav-header">
+    <h1>KACHIBHOTLA NAGA SAI SIRIAKSHAYA</h1>
+    <p>Email: knsakki@gmail.com</p>
+    <p>+91-8341562820</p>
+  </div>
+    <button data-section="personal" class="active"><i class="fas fa-user"></i> Personal</button>
+    <button data-section="education"><i class="fas fa-graduation-cap"></i> Education</button>
+    <button data-section="projects"><i class="fas fa-project-diagram"></i> Projects</button>
+    <button data-section="skills"><i class="fas fa-laptop-code"></i> Skills</button>
+    <button data-section="certifications"><i class="fas fa-certificate"></i> Certifications</button>
+    <button data-section="internships"><i class="fas fa-briefcase"></i> Internships</button>
+    <button data-section="achievements"><i class="fas fa-trophy"></i> Achievements</button>
+    <button data-section="additional"><i class="fas fa-info-circle"></i> Additional</button>
+  </nav>
+
+  <main>
+    
+<div id="personal" class="section active">
+  <h2><i class="fas fa-id-card"></i> Personal Information</h2>
+  <div class="info-block">
+    <p><i class="fas fa-user" style="margin-right: 8px; color: #f1c40f;"></i><strong>Name:</strong> KACHIBHOTLA NAGA SAI SIRIAKSHAYA</p>
+    <p><i class="fas fa-envelope" style="margin-right: 8px; color: #3498db;"></i><strong>Email:</strong> knsakki@gmail.com</p>
+    <p><i class="fas fa-phone" style="margin-right: 8px; color: #1abc9c;"></i><strong>Phone:</strong> +91-8341562820</p>
+    <p><i class="fas fa-map-marker-alt" style="margin-right: 8px; color: #e67e22;"></i><strong>Location:</strong> Vijayawada, Andhra Pradesh -India</p>
+
+    <div class="social-links">
+      <a href="https://github.com/knssiriakshaya" style="color: #333;"><i class="fab fa-github" style="color: #333;"></i> GitHub</a> |
+      <a href=" 	https://www.linkedin.com/in/kachibhotla-naga-sai-siriakshaya-575617258" style="color: #0077b5;"><i class="fab fa-linkedin" style="color: #0077b5;"></i> LinkedIn</a>
+    </div>
+
+    <div class="hire-me-block">
+      <h3><i class="fas fa-briefcase" style="margin-right: 8px; color: #6c3100;"></i> Why Should You Hire Me?</h3>
+      <p>
+        I am action-oriented and focused, with strong problem-solving skills, leadership ability, and clear communication.
+        I enjoy working in teams and bring a creative mindset to solving challenges and delivering results.
+        I am ready to contribute effectively and grow continuously.
+      </p>
+    </div>
+  </div>
+</div>
+
+    <div id="education" class="section">
+      <h2>🎓 Education</h2>
+      <div class="edu-block">
+        <span>Engineering</span>
+        <span>VELAGAPUDI RAMAKRISHNA SIDDHARTHA ENGINEERING COLLEGE </span>
+        <span>CGPA: 9.15/10.00</span>
+        <span>2022 - 2026</span>
+      </div>
+      <div class="edu-block">
+        <span>Intermediate</span>
+        <span>SRI BHAVISHYA  Junior College</span>
+        <span>Marks: 98.1%</span>
+        <span>2020 - 2022</span>
+      </div>
+      <div class="edu-block">
+        <span>Schooling</span>
+        <span>KKR’S SAMVIDA VIDHYA PEETH</span>
+        <span>Marks: 92.8%</span>
+        <span>2020</span>
+      </div>
+    </div>
+
+<!-- PROJECTS SECTION -->
+<div id="projects" class="section">
+  <h2>💼 Professional Projects</h2>
+  <div class="cards">
+    <div class="flip-card">
+      <div class="flip-inner">
+        <div class="flip-front">
+          <div class="card-icon">
+        <i class="fas fa-id-card"></i>
+      </div>
+          <h3>Portfolio Website</h3>
+          
+          <p>📅 June 2025</p>
+          <i class="fas fa-sync-alt flip-icon"></i>
+        </div>
+        <div class="flip-back">
+          <p>A personal portfolio showcasing my projects, skills, and achievements.
+Explore my work in AI, web development, and open-source contributions.</p>
+          <p>🛠️ <strong>Technologies:</strong> HTML, CSS, JavaScript</p>
+          <p>🔗 <a href="https://github.com/knssiriakshaya/kns_siriakshaya_portfolio" target="_blank">GitHub Repo</a></p>
+          <i class="fas fa-sync-alt flip-icon"></i>
+        </div>
+      </div>
+    </div>
+    <!-- Flip Card 1 -->
+    <div class="flip-card">
+      <div class="flip-inner">
+        <div class="flip-front">
+          <div class="card-icon">
+          <i class="fas fa-water"></i>
+
+          </div>
+          <h3>Oil Spills Detection using Spiking Neural Networks</h3>
+           <p>📅 May 2025</p>
+          <i class="fas fa-sync-alt flip-icon"></i>
+        </div>
+        <div class="flip-back">
+          <p>Developed a brain-inspired ,energy efficient SNN model to detect oil spills in satellite images. Helps identify oil spills quickly and accurately.</p>
+          <p>🛠️ <strong>Technologies:</strong> Flask, SNN, HTML, CSS, JS</p>
+          <p>🔗 <a href="https://github.com/knssiriakshaya/Oil_spill_detection" target="_blank">GitHub Repo</a></p>
+          <i class="fas fa-sync-alt flip-icon"></i>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Flip Card 2 -->
+    <div class="flip-card">
+      <div class="flip-inner">
+        <div class="flip-front">
+          <div class="card-icon">
+          <i class="fas fa-stethoscope"></i>
+
+          </div>
+          <h3>Laryngeal Cancer Detection and Classification Using Squeezenet</h3>
+          <p>📅 December 2024</p>
+          <i class="fas fa-sync-alt flip-icon"></i>
+        </div>
+        <div class="flip-back">
+          <p>Built an AI model using SqueezeNet to detect and classify laryngeal cancer. Enables faster and more accurate medical diagnosis.</p>
+          
+          <p>🛠️ <strong>Technologies:</strong> SqueezeNet, Flask, HTML, CSS, JavaScript</p>
+          <p>🔗 <a href="https://github.com/knssiriakshaya/Laryngeal_cancer_detection" target="_blank">GitHub Repo</a></p>
+          <i class="fas fa-sync-alt flip-icon"></i>
+        </div>
+      </div>
+    </div>
+    <div class="flip-card">
+      <div class="flip-inner">
+        <div class="flip-front">
+          <div class="card-icon">
+          <i class="fas fa-weight"></i>
+
+          </div>
+          <h3>Predicting Obesity Levels Using ML And DL Methods</h3>
+          <p>📅 November 2024</p>
+          <i class="fas fa-sync-alt flip-icon"></i>
+        </div>
+        <div class="flip-back">
+          <p>To predict the ’Obesity Level’ of a person based on 
+their eating and exercise habits.</p>
+          <p>🛠️ <strong>Technologies:</strong> ML(XGBoost), Flask, HTML, CSS, JavaScript</p>
+          <p>🔗 <a href="https://github.com/knssiriakshaya/Obesity_level_prediction" target="_blank">GitHub Repo</a></p>
+          <i class="fas fa-sync-alt flip-icon"></i>
+        </div>
+      </div>
+    </div>
+    <div class="flip-card">
+      <div class="flip-inner">
+        <div class="flip-front">
+          <div class="card-icon">
+          <i class="fas fa-user-graduate"></i>
+
+          </div>
+          <h3>Student Information System</h3>
+          <p>📅 November 2024</p>
+          <i class="fas fa-sync-alt flip-icon"></i>
+        </div>
+        <div class="flip-back">
+          <p>A system to manage student information, including enrollments, course registrations, and academic records,
+streamlining administration for students, faculty, and staff.</p>
+          <p>🛠️ <strong>Technologies:</strong> MySQL, Flask, HTML, CSS, JavaScript</p>
+          <p>🔗 <a href="https://github.com/knssiriakshaya/Student_Information_System" target="_blank">GitHub Repo</a></p>
+          <i class="fas fa-sync-alt flip-icon"></i>
+        </div>
+      </div>
+    </div>
+    <div class="flip-card">
+      <div class="flip-inner">
+        <div class="flip-front">
+          <div class="card-icon">
+          <i class="fas fa-comments"></i>
+
+          </div>
+          <h3>Sentiment Analysis for Student Feedback</h3>
+
+          <p>📅 August 2024</p>
+          <i class="fas fa-sync-alt flip-icon"></i>
+        </div>
+        <div class="flip-back">
+                    <p>Built a bot to process and classify student feedback using sentiment analysis.
+It provides insights into sentiment trends and generates summary reports.</p>
+          <p>🛠️ <strong>Technologies:</strong> UiPath Studio, Microsoft Excel, Power BI, HTML, CSS, Node.js, JavaScript</p>
+          <p>🔗 <a href="https://github.com/knssiriakshaya/Student_Feedback_Sentiment_Analysis" target="_blank">GitHub Repo</a></p>
+          <i class="fas fa-sync-alt flip-icon"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <h2>🔧 Self Practice Projects</h2>
+  <div class="cards">
+    <!-- Flip Card 3 -->
+    <div class="flip-card">
+      <div class="flip-inner">
+        <div class="flip-front">
+          <div class="card-icon">
+            <i class="fas fa-book"></i>
+          </div>
+          <h3>Library Information System <br>(Java Console Application)</h3>
+          <p>📅 April 2025</p>
+          <i class="fas fa-sync-alt flip-icon"></i>
+        </div>
+        <div class="flip-back">
+          <p>A simple console-based system to manage books, users, and borrowing transactions.
+Implements basic operations like adding, issuing, and returning books using Java.</p>
+          <p>🛠️ <strong>Technologies:</strong> Java</p>
+          <p>🔗 <a href="https://github.com/knssiriakshaya/Library_Info_System" target="_blank">GitHub Repo</a></p>
+          <i class="fas fa-sync-alt flip-icon"></i>
+        </div>
+      </div>
+    </div>
+
+    <!-- Flip Card 4 -->
+    <div class="flip-card">
+      <div class="flip-inner">
+        <div class="flip-front">
+          <div class="card-icon">
+            <i class="fas fa-sort-numeric-up"></i>
+          </div>
+          <h3>Number Guessing Game</h3>
+          <p>📅 February 2025</p>
+          <i class="fas fa-sync-alt flip-icon"></i>
+        </div>
+        <div class="flip-back">
+          <p>A fun guessing game where you try to find the hidden number.
+Get hints and win within limited attempts.</p>
+          <p>🛠️ <strong>Technologies:</strong> HTML, CSS, JavaScript</p>
+          <p>🔗 <a href="https://github.com/knssiriakshaya/Guess_number" target="_blank">GitHub Repo</a></p>
+          <i class="fas fa-sync-alt flip-icon"></i>
+        </div>
+      </div>
+    </div>
+    <div class="flip-card">
+      <div class="flip-inner">
+        <div class="flip-front">
+          <div class="card-icon">
+            <i class="fas fa-calendar-alt"></i>
+          </div>
+          <h3>Age Calculator</h3>
+          <p>📅 February 2025</p>
+          <i class="fas fa-sync-alt flip-icon"></i>
+        </div>
+        <div class="flip-back">
+          <p>This is a simple web application that calculates a user's age based on their date of birth. It also provides the number of days remaining until the user's next birthday.</p>
+          <p>🛠️ <strong>Technologies:</strong> HTML, CSS, JavaScript</p>
+          <p>🔗 <a href="https://github.com/knssiriakshaya/Age_Calculation" target="_blank">GitHub Repo</a></p>
+          <i class="fas fa-sync-alt flip-icon"></i>
+        </div>
+      </div>
+    </div>
+    <div class="flip-card">
+      <div class="flip-inner">
+        <div class="flip-front">
+          <div class="card-icon">
+            <i class="fas fa-clipboard-list"></i>
+          </div>
+          <h3>Loan Prediction<br>ML model</h3>
+          <p>📅 January 2025</p>
+          <i class="fas fa-sync-alt flip-icon"></i>
+        </div>
+        <div class="flip-back">
+          <p>A ML model which predicts whether a loan application is likely to be approved or rejected.</p>
+          <p>🛠️ <strong>Technologies:</strong> Machine Learning</p>
+          <p>🔗 <a href="https://github.com/knssiriakshaya/Loan_Prediction" target="_blank">GitHub Repo</a></p>
+          <i class="fas fa-sync-alt flip-icon"></i>
+        </div>
+      </div>
+    </div>
+    <div class="flip-card">
+      <div class="flip-inner">
+        <div class="flip-front">
+          <div class="card-icon">
+            <i class="fas fa-dice"></i>
+          </div>
+          <h3>Snakes and Ladders Game</h3>
+          <p>📅 October 2024</p>
+          <i class="fas fa-sync-alt flip-icon"></i>
+        </div>
+        <div class="flip-back">
+          <p>A classic Snakes and Ladders game developed using JSP.
+Play with dynamic turns, dice rolls, and winner tracking.</p>
+          <p>🛠️ <strong>Technologies:</strong> HTML, CSS, JavaScript, Java Server Pages(JSP)</p>
+          <p>🔗 <a href="https://github.com/knssiriakshaya/SnakesAndLadders" target="_blank">GitHub Repo</a></p>
+          <i class="fas fa-sync-alt flip-icon"></i>
+        </div>
+      </div>
+    </div>
+    <div class="flip-card">
+      <div class="flip-inner">
+        <div class="flip-front">
+          <div class="card-icon">
+            <i class="fas fa-hotel"></i>
+          </div>
+          <h3>Hotel Room Booking <br>(Java Console Application)</h3>
+          <p>📅 December 2023</p>
+          <i class="fas fa-sync-alt flip-icon"></i>
+        </div>
+        <div class="flip-back">
+          <p>A simple Java console app to book hotel rooms, check availability, and calculate total costs.
+Users select hotels, room types, and get a booking summary instantly.</p>
+          <p>🛠️ <strong>Technologies:</strong> Java</p>
+          <p>🔗 <a href="https://github.com/knssiriakshaya/Hotel_Room_Booking" target="_blank">GitHub Repo</a></p>
+          <i class="fas fa-sync-alt flip-icon"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</div>
+   
+
+<!-- Skills Section -->
+<div id="skills" class="section">
+  <h2 class="section-heading">💻 Technical Skills</h2>
+  <div class="skills-stack">
+
+    <div class="skills-group">
+
+      <!-- Programming Languages Accordion -->
+      <div class="accordion">
+        <div class="accordion-header">
+          <i class="fas fa-code"></i> Programming Languages <span class="arrow">▼</span>
+        </div>
+        <div class="accordion-content">
+          <div class="skill">
+            <span><i class="devicon-c-plain colored"></i> C</span>
+            <div class="bar"><div style="width: 85%;"></div></div>
+          </div>
+          <div class="skill">
+            <span><i class="devicon-python-plain colored"></i> Python</span>
+            <div class="bar"><div style="width: 90%;"></div></div>
+          </div>
+          <div class="skill">
+            <span><i class="devicon-java-plain colored"></i> Java</span>
+            <div class="bar"><div style="width: 80%;"></div></div>
+          </div>
+          <div class="skill">
+            <span>
+  <img src="https://upload.wikimedia.org/wikipedia/commons/1/1b/R_logo.svg" alt="R logo" style="height: 20px; vertical-align: middle; margin-right: 5px;">
+  R
+</span>
+
+            <div class="bar"><div style="width: 75%;"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Web Technologies Accordion -->
+      <div class="accordion">
+        <div class="accordion-header">
+          <i class="fas fa-globe"></i> Web Technologies <span class="arrow">▼</span>
+        </div>
+        <div class="accordion-content">
+          <div class="skill">
+            <span><i class="devicon-html5-plain colored"></i> HTML</span>
+            <div class="bar"><div style="width: 90%;"></div></div>
+          </div>
+          <div class="skill">
+            <span><i class="devicon-css3-plain colored"></i> CSS</span>
+            <div class="bar"><div style="width: 85%;"></div></div>
+          </div>
+          <div class="skill">
+            <span><i class="devicon-javascript-plain colored"></i> JavaScript</span>
+            <div class="bar"><div style="width: 80%;"></div></div>
+          </div>
+          <div class="skill">
+            <span><i class="devicon-nodejs-plain colored"></i> Node.js</span>
+            <div class="bar"><div style="width: 75%;"></div></div>
+          </div>
+          <div class="skill">
+            <span><i class="devicon-express-original colored"></i> Express.js</span>
+            <div class="bar"><div style="width: 70%;"></div></div>
+          </div>
+          <div class="skill">
+            <span><i class="devicon-angularjs-plain colored"></i> Angular</span>
+            <div class="bar"><div style="width: 65%;"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Database Accordion -->
+      <div class="accordion">
+        <div class="accordion-header">
+          <i class="fas fa-database"></i> Database Systems <span class="arrow">▼</span>
+        </div>
+        <div class="accordion-content">
+          <div class="skill">
+            <span><i class="devicon-mysql-plain colored"></i> MySQL</span>
+            <div class="bar"><div style="width: 80%;"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ML/Data Science Accordion -->
+<div class="accordion">
+  <div class="accordion-header">
+    <i class="fas fa-robot"></i> Data Science & ML <span class="arrow">▼</span>
+  </div>
+  <div class="accordion-content">
+    <div class="skill">
+      <span><i class="devicon-python-plain colored"></i> Pandas</span>
+      <div class="bar"><div style="width: 85%;"></div></div>
+    </div>
+    <div class="skill">
+      <span><i class="devicon-python-plain colored"></i> NumPy</span>
+      <div class="bar"><div style="width: 85%;"></div></div>
+    </div>
+    <div class="skill">
+      <span><i class="fas fa-brain" style="color:#fbbc05;"></i> Scikit-learn</span>
+      <div class="bar"><div style="width: 80%;"></div></div>
+    </div>
+    <div class="skill">
+      <span><i class="fas fa-chart-line" style="color:#4CAF50;"></i> Matplotlib</span>
+      <div class="bar"><div style="width: 75%;"></div></div>
+    </div>
+    <div class="skill">
+      <span><i class="fas fa-cloud" style="color:#4285F4;"></i> Google Colab</span>
+      <div class="bar"><div style="width: 90%;"></div></div>
+    </div>
+    <div class="skill">
+      <span><i class="fas fa-book" style="color:#f37626;"></i> Jupyter Notebook</span>
+      <div class="bar"><div style="width: 90%;"></div></div>
+    </div>
+  </div>
+</div>
+
+
+    </div>
+  </div>
+
+  <h2 class="section-heading">🌟 Professional Skills</h2>
+<ul class="plain-list">
+  <li><i class="fas fa-lightbulb" style="color: #f1c40f;"></i> Problem-Solving</li>
+  <li><i class="fas fa-users" style="color: #3498db;"></i> Team Leadership</li>
+  <li><i class="fas fa-microphone" style="color: #14051b;"></i> Presentation Skills</li>
+  <li><i class="fas fa-hourglass-half" style="color: #e67e22;"></i> Time Management</li>
+  <li><i class="fas fa-handshake" style="color: #1abc9c;"></i> Team Collaboration</li>
+  <li><i class="fas fa-paint-brush" style="color: #e84393;"></i> Design Thinking</li>
+</ul>
+
+</div>
+<div id="certifications" class="section">
+  <h2>📜 Certifications</h2>
+  <div class="certifications-container">
+    <div class="certification-entry">
+      <div>Infosys SpringBoard</div>
+      <div>Java Foundation Certification</div>
+      <div>June 2025</div>
+    </div>
+    <div class="certification-entry">
+      <div>NPTEL</div>
+      <div>Ethical Hacking</div>
+      <div>October 2024</div>
+    </div>
+    <div class="certification-entry">
+      <div>L4G</div>
+      <div>Generative AI by Google Cloud</div>
+      <div>September 2024</div>
+    </div>
+    <div class="certification-entry">
+      <div>Cisco Networking Academy</div>
+      <div>Introduction to Networks</div>
+      <div>May 2024</div>
+    </div>
+    <div class="certification-entry">
+      <div>Edx</div>
+      <div>Java Programming Fundamentals</div>
+      <div>May 2024</div>
+    </div>
+    <div class="certification-entry">
+      <div>Edx</div>
+      <div>Introduction to Data Science in Python</div>
+      <div>April 2024</div>
+    </div>
+    <div class="certification-entry">
+      <div>Infosys SpringBoard</div>
+      <div>Artificial Intelligence Foundation Certification</div>
+      <div>January 2024</div>
+    </div>
+    <div class="certification-entry">
+      <div>HackerRank</div>
+      <div>Python (Basics) Certification</div>
+      <div>January 2024</div>
+    </div>
+    <div class="certification-entry">
+      <div>Cisco Networking Academy</div>
+      <div>IoT Fundamentals - Connecting Things</div>
+      <div>December 2023</div>
+    </div>
+    <div class="certification-entry">
+      <div>NPTEL</div>
+      <div>Programming in Modern C++</div>
+      <div>October 2023</div>
+    </div>
+    <div class="certification-entry">
+      <div>NPTEL</div>
+      <div>Foundations of R Software</div>
+      <div>October 2023</div>
+    </div>
+    <div class="certification-entry">
+      <div>NPTEL</div>
+      <div>Computer Graphics</div>
+      <div>September 2023</div>
+    </div>
+    <div class="certification-entry">
+      <div>Cisco Networking Academy</div>
+      <div>Programming Essentials in Python</div>
+      <div>May 2023</div>
+    </div>
+    <div class="certification-entry">
+      <div>Cisco Networking Academy</div>
+      <div>Programming Essentials in C</div>
+      <div>May 2023</div>
+    </div>
+    <div class="certification-entry">
+      <div>NPTEL</div>
+      <div>Introduction to Internet of Things</div>
+      <div>April 2023</div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+    <!-- Internships Section -->
+<div id="internships" class="section">
+  <h2><i class="fas fa-briefcase"></i> Internships</h2>
+
+  <div class="internship-container">
+
+    <div class="internship-entry">
+      <div><i class="fas fa-university"></i> Eduskills, AICTE</div>
+      <div><i class="fas fa-brain"></i>Google Cloud Generative AI Virtual Internship</div>
+      <div><i class="fas fa-calendar-alt"></i> April 2025 – June 2025</div>
+    </div>
+
+    <div class="internship-entry">
+      <div><i class="fas fa-building"></i> Infosys Springboard 5.0</div>
+      <div><i class="fas fa-project-diagram"></i> AIML Project Intern</div>
+      <div><i class="fas fa-calendar-alt"></i> Oct 2024 – Dec 2024</div>
+    </div>
+
+    <div class="internship-entry">
+      <div><i class="fas fa-university"></i> Eduskills, AICTE </div>
+      <div><i class="fab fa-aws"></i> AWS Data Engineering Virtual Internship</div>
+      <div><i class="fas fa-calendar-alt"></i> July 2024 – Sep 2024</div>
+    </div>
+
+    <div class="internship-entry">
+      <div><i class="fas fa-university"></i> Eduskills, AICTE </div>
+      <div><i class="fab fa-google"></i> Google Android Developer Virtual Internship</div>
+      <div><i class="fas fa-calendar-alt"></i> April 2024 – June 2024</div>
+    </div>
+
+    <div class="internship-entry">
+      <div><i class="fas fa-university"></i> Eduskills, AICTE </div>
+      <div><i class="fab fa-google"></i> Google AI - ML Virtual Internship</div>
+      <div><i class="fas fa-calendar-alt"></i> Jan 2024 – March 2024</div>
+    </div>
+
+    <div class="internship-entry">
+      <div><i class="fas fa-laptop-code"></i> SmartInternz, AICTE</div>
+      <div><i class="fab fa-salesforce"></i> Salesforce Developer Virtual Internship</div>
+      <div><i class="fas fa-calendar-alt"></i> Nov 2023 – Dec 2023</div>
+    </div>
+
+    <div class="internship-entry">
+      <div><i class="fas fa-university"></i> Eduskills, AICTE</div>
+      <div><i class="fab fa-aws"></i> AWS AI-ML Virtual Internship</div>
+      <div><i class="fas fa-calendar-alt"></i> Sep 2023 – Nov 2023</div>
+    </div>
+
+  </div>
+</div>
+
+
+
+    <!-- Achievements Section -->
+<div id="achievements" class="section">
+  <h2>🏆 Achievements</h2>
+  <div class="achievement-list">
+    <p>🥈🤖 Got 2nd prize in UiPath Hackathon, Hack-A-Bot</p>
+    <p>💻🌟 Got selected and participated in Code For Good 2024 Hackathon, JP Morgan, Hyderabad</p>
+    <p>🥈📚 Got a silver badge in NPTEL courses, Foundations of R Software and Ethical Hacking</p>
+    <p>🥈🏅 I was in the topper 2% and got a silver badge in NPTEL course, Introduction to Internet of Things</p>
+  </div>
+</div>
+
+
+    <div id="additional" class="section">
+      <div class="skills-stack">
+        <h2>🌐 Languages Known</h2>
+        <div class="skills-group">
+          <div class="skill">
+            <span>English</span>
+            <div class="bar"><div style="width:98%"></div></div>
+          </div>
+          <div class="skill">
+            <span>Hindi</span>
+            <div class="bar"><div style="width:95%"></div></div>
+          </div>
+          <div class="skill">
+            <span>Telugu</span>
+            <div class="bar"><div style="width:100%"></div></div>
+          </div>
+        </div>
+        <h2>🎯 Interests</h2>
+        <ul>
+          <li>📊🤖 Machine Learning</li>
+          <li>🌐💻 Web Development</li>
+        </ul>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    const navButtons = document.querySelectorAll("nav button");
+    const sections = document.querySelectorAll(".section");
+
+    navButtons.forEach(button => {
+      button.addEventListener("click", () => {
+        const id = button.dataset.section;
+        navButtons.forEach(btn => btn.classList.remove("active"));
+        button.classList.add("active");
+        sections.forEach(sec => {
+          sec.classList.remove("active");
+          if(sec.id === id) sec.classList.add("active");
+        });
+        document.querySelectorAll(".bar div").forEach(bar => {
+          const w = bar.style.width;
+          bar.style.width = "0%";
+          setTimeout(() => { bar.style.width = w; }, 100);
+        });
+      });
+    });
+
+    const flipCards = document.querySelectorAll('.flip-card');
+    flipCards.forEach(card => {
+      card.addEventListener('click', () => {
+        if (card.classList.contains('flipped')) {
+          card.classList.remove('flipped');
+        } else {
+          flipCards.forEach(c => c.classList.remove('flipped'));
+          card.classList.add('flipped');
+        }
+      });
+    });
+
+    
+  const accordions = document.querySelectorAll('.accordion-header');
+
+  accordions.forEach(header => {
+    header.addEventListener('click', () => {
+      const accordion = header.parentElement;
+
+      // Close others
+      document.querySelectorAll('.accordion').forEach(a => {
+        if (a !== accordion) a.classList.remove('active');
+      });
+
+      // Toggle this one
+      accordion.classList.toggle('active');
+    });
+  });
+
+
+  </script>
+</body>
+</html>

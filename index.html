@@ -314,7 +314,7 @@ nav {
   position: fixed;
   top: 0;
   left: 0;
-  width: 120px; /* fixed width */
+  width: 150px; /* fixed width */
   height: 100%;
   overflow-y: auto;
   overflow-x: auto; /* never horizontal scroll in nav */
@@ -324,15 +324,7 @@ nav {
 }
 
 /* Content */
-main {
-  margin-left: 120px; /* same as nav width */
-  max-width: calc(100% - 120px);
-  overflow-x: auto;   /* allow horizontal scroll for wide content */
-  overflow-y: auto;
-  height: 100vh;
-  box-sizing: border-box;
-  padding: 2rem 1rem;
-}
+
 
 header {
   display: none; /* Hide separate header on mobile */
@@ -356,8 +348,8 @@ main .scroll-wrapper {
   }
 
   main {
-    margin-left: 220px; /* same as nav width */
-    max-width: calc(100% - 220px);
+    margin-left: 100px; /* same as nav width */
+    max-width: calc(100% );
     overflow-x: auto;  /* horizontal scroll for content if needed */
     overflow-y: auto;  /* vertical scroll for content if needed */
     height: 100vh;     /* fill viewport height */

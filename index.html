@@ -214,7 +214,6 @@
   box-sizing: border-box;
   text-align: center;
 
-  /* ✅ THIS fixes your issue! */
   backface-visibility: hidden;
 }
 
@@ -247,15 +246,7 @@
 .flip-card:hover .flip-icon {
   transform: rotate(180deg);
 }
-/* ✅ Make flip cards fully responsive on small screens */
-.flip-card {
-  width: 100%;
-  max-width: 400px; /* Same look on desktop */
-  height: 300px;
-  perspective: 1000px;
-  cursor: pointer;
-  margin-bottom: 1rem; /* Adds spacing between stacked cards */
-}
+
 
 /* ✅ Make sure .cards wraps nicely with spacing */
 .cards {
@@ -292,7 +283,15 @@
     overflow-x: hidden; /* no horizontal scroll */
     z-index: 999;
   }
-
+/* ✅ Make flip cards fully responsive on small screens */
+.flip-card {
+  width: 100%;
+  max-width: 400px; /* Same look on desktop */
+  height: 500px;
+  perspective: 1000px;
+  cursor: pointer;
+  margin-bottom: 1rem; /* Adds spacing between stacked cards */
+}
  /* Sidebar header block */
 nav .nav-header {
   padding: 1rem;

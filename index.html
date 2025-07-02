@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Portfolio of KACHIBHOTLA NAGA SAI SIRIAKSHAYA</title>
+  <title>Portfolio - KACHIBHOTLA NAGA SAI SIRIAKSHAYA</title>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <script src="https://kit.fontawesome.com/4ad276d1a5.js" crossorigin="anonymous"></script>
   <link
@@ -11,9 +11,6 @@
   href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
   
 />
-
-
-<!-- Devicon -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
 
 
@@ -35,6 +32,38 @@
     }
     .nav-header {
   display: none;
+}
+.awards-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+
+.awards-table th,
+.awards-table td {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  text-align: left;
+  padding: 0.75rem;
+}
+
+.awards-table th {
+  font-weight: 600;
+  color: #fff;
+}
+
+.awards-table td {
+  color: #fff;
+}
+
+.awards-table tbody tr:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+footer {
+  text-align: center;
+  padding: 1rem;
+  font-size: 0.9rem;
+  color: #ffff14c5;
 }
 
 .main-header {
@@ -126,6 +155,28 @@
   font-weight: bold;
 }
 
+.subsection-heading {
+  border-bottom: 2px solid #ffffff;
+  display: inline-block;
+  padding-bottom: 4px;
+  margin-top: 1rem;
+}
+.coding-details {
+  margin-top: 1rem;
+  padding-left: 1.5rem;
+}
+
+.coding-details li {
+  margin-bottom: 0.5rem;
+  list-style: none;
+}
+.coding-links img {
+  width: 64px;
+  height: auto;
+  vertical-align: middle;
+  margin: 0 8px;   
+}
+
 
 
     .edu-block {
@@ -213,7 +264,6 @@
   padding: 1rem;
   box-sizing: border-box;
   text-align: center;
-
   backface-visibility: hidden;
 }
 
@@ -247,18 +297,13 @@
   transform: rotate(180deg);
 }
 
-
-/* ✅ Make sure .cards wraps nicely with spacing */
 .cards {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 1rem; /* Smaller gap looks better on mobile */
+  gap: 1rem; 
 }
 
-
-/* ✅ MOBILE NAV TWEAKS */
-/* MOBILE VERSION FIXED SIDEBAR */
 @media (max-width: 768px) {
   .nav-header {
     display: block;
@@ -268,70 +313,65 @@
     display: none;
   }
 
-  nav {
-    flex-direction: column;
-    align-items: flex-start;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 220px; /* fixed width, enough for text */
-    height: 100%;
-    background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(10px);
-    border-right: 1px solid rgba(255, 255, 255, 0.3);
-    overflow-y: auto;
-    overflow-x: hidden; /* no horizontal scroll */
-    z-index: 999;
-  }
-/* ✅ Make flip cards fully responsive on small screens */
-.flip-card {
-  width: 100%;
-  max-width: 400px; /* Same look on desktop */
-  height: 500px;
-  perspective: 1000px;
-  cursor: pointer;
-  margin-bottom: 1rem; /* Adds spacing between stacked cards */
+
+footer {
+ 
+  padding-left: 10rem;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #f6de03;
+  
 }
- /* Sidebar header block */
+
 nav .nav-header {
-  padding: 1rem;
+  padding: 0.5rem;
   border-bottom: 1px solid rgba(255, 255, 255, 0.3);
   width: 100%;
+}
+nav .nav-header h1 {
+  
+   font-size: 1.2rem;
+
 }
 
 nav .nav-header p {
   margin: 0.3rem 0;
-  font-weight: bold;
+  font-weight: 200;
   font-size: 1rem;
   word-break: break-word;
 }
 
-/* Sidebar base */
 nav {
   flex-direction: column;
   align-items: flex-start;
   position: fixed;
   top: 0;
   left: 0;
-  width: 150px; /* fixed width */
+  width: 150px; 
   height: 100%;
   overflow-y: auto;
-  overflow-x: auto; /* never horizontal scroll in nav */
+  overflow-x: auto; 
   background: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(10px);
   border-right: 1px solid rgba(255, 255, 255, 0.3);
 }
 
-/* Content */
 
-
+.flip-card {
+  width: 100%;
+  max-width: 400px; 
+  height: 500px;
+  perspective: 1000px;
+  cursor: pointer;
+  margin-bottom: 1rem;
+}
 header {
-  display: none; /* Hide separate header on mobile */
+  display: none; 
 }
 
-/* For tables or wide blocks, wrap in a scrollable div */
+
 main table {
-  min-width: 600px; /* or whatever you need */
+  min-width: 600px;
 }
 
 main .scroll-wrapper {
@@ -347,17 +387,17 @@ main .scroll-wrapper {
   }
 
   main {
-    margin-left: 150px; /* same as nav width */
+    margin-left: 150px;
     max-width: calc(100% );
-    overflow-x: auto;  /* horizontal scroll for content if needed */
-    overflow-y: auto;  /* vertical scroll for content if needed */
-    height: 100vh;     /* fill viewport height */
+    overflow-x: auto; 
+    overflow-y: auto;  
+    height: 100vh;     
     box-sizing: border-box;
     padding: 2rem 1rem;
   }
 
   header {
-    display: none; /* hide separate header */
+    display: none; 
   }
 
 .card-icon {
@@ -399,7 +439,7 @@ main .scroll-wrapper {
 .accordion-header .arrow {
   float: right;
   transition: transform 0.3s ease;
-  opacity: 0.5; /* 👈 makes it semi-transparent */
+  opacity: 0.5; 
 }
 
 
@@ -414,27 +454,27 @@ main .scroll-wrapper {
 }
 
 .accordion.active .accordion-content {
-  max-height: 500px; /* or larger if needed */
+  max-height: 500px;
 }
 
 .plain-list {
-  list-style: none;   /* no bullets */
-  padding: 0;         /* no indent */
-  margin: 0;          /* no margin */
-  text-align: center; /* center the block */
+  list-style: none;   
+  padding: 0;
+  margin: 0;
+  text-align: center; 
 }
 
 .plain-list li {
-  list-style: none;   /* extra safety */
+  list-style: none;  
   margin: 0.5rem 0;
   font-size: 1.1rem;
   display: block;
-  text-align: center; /* align text under heading */
+  text-align: center;
 }
 
-/* For modern browsers that might add markers: */
+
 .plain-list li::marker {
-  content: none; /* remove bullet/marker */
+  content: none; 
 }
 
 .certifications-container {
@@ -446,7 +486,7 @@ main .scroll-wrapper {
 .certification-entry {
   display: grid;
   grid-template-columns: 1fr 2fr 1fr;
-  gap: 30px; /* wider gap for clarity */
+  gap: 30px; 
   backdrop-filter: blur(10px);
   border-bottom: 1px solid rgba(255,255,255,0.2);
   padding: 10px;
@@ -454,7 +494,7 @@ main .scroll-wrapper {
 }
 
 .certification-entry div {
-  overflow: auto; /* allow scrolling if needed */
+  overflow: auto;
    text-align: left;
 }
 
@@ -477,7 +517,7 @@ main .scroll-wrapper {
 .internship-entry {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  column-gap: 30px; /* Increased horizontal gap */
+  column-gap: 30px; 
    text-align: left;
   backdrop-filter: blur(10px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
@@ -550,10 +590,10 @@ main .scroll-wrapper {
     }
 
     .achievement-list {
-  white-space: nowrap;      /* Prevent line breaks */
+  white-space: nowrap;     
   overflow-x: auto;     
    
-     /* Allow horizontal scroll if needed */
+
 }
 
     .info-block {
@@ -592,7 +632,7 @@ main .scroll-wrapper {
 }
 
 .accordion.active .accordion-content {
-  max-height: 500px; /* adjust as needed */
+  max-height: 500px; 
 }
 
 .accordion-header:hover {
@@ -607,14 +647,17 @@ main .scroll-wrapper {
 <body>
   <header class="main-header">
     <h1>KACHIBHOTLA NAGA SAI SIRIAKSHAYA</h1>
-    <p>Email: knsakki@gmail.com |+91-8341562820</p>
+    <p>Email: knsakki@gmail.com </p>
   </header>
+  
+
 
   <nav>
     <div class="nav-header">
+    
     <h1>KACHIBHOTLA NAGA SAI SIRIAKSHAYA</h1>
     <p>Email: knsakki@gmail.com</p>
-    <p>+91-8341562820</p>
+    
   </div>
     <button data-section="personal" class="active"><i class="fas fa-user"></i> Personal</button>
     <button data-section="education"><i class="fas fa-graduation-cap"></i> Education</button>
@@ -674,9 +717,9 @@ main .scroll-wrapper {
       </div>
     </div>
 
-<!-- PROJECTS SECTION -->
+
 <div id="projects" class="section">
-  <h2>💼 Professional Projects</h2>
+  <h2>💼 Major Projects</h2>
   <div class="cards">
     <div class="flip-card">
       <div class="flip-inner">
@@ -698,7 +741,7 @@ Explore my work in AI, web development, and open-source contributions.</p>
         </div>
       </div>
     </div>
-    <!-- Flip Card 1 -->
+  
     <div class="flip-card">
       <div class="flip-inner">
         <div class="flip-front">
@@ -719,7 +762,7 @@ Explore my work in AI, web development, and open-source contributions.</p>
       </div>
     </div>
     
-    <!-- Flip Card 2 -->
+    
     <div class="flip-card">
       <div class="flip-inner">
         <div class="flip-front">
@@ -806,7 +849,7 @@ It provides insights into sentiment trends and generates summary reports.</p>
 
   <h2>🔧 Self Practice Projects</h2>
   <div class="cards">
-    <!-- Flip Card 3 -->
+    
     <div class="flip-card">
       <div class="flip-inner">
         <div class="flip-front">
@@ -827,7 +870,7 @@ Implements basic operations like adding, issuing, and returning books using Java
       </div>
     </div>
 
-    <!-- Flip Card 4 -->
+
     <div class="flip-card">
       <div class="flip-inner">
         <div class="flip-front">
@@ -927,14 +970,14 @@ Users select hotels, room types, and get a booking summary instantly.</p>
 </div>
    
 
-<!-- Skills Section -->
+
 <div id="skills" class="section">
   <h2 class="section-heading">💻 Technical Skills</h2>
   <div class="skills-stack">
 
     <div class="skills-group">
 
-      <!-- Programming Languages Accordion -->
+
       <div class="accordion">
         <div class="accordion-header">
           <i class="fas fa-code"></i> Programming Languages <span class="arrow">▼</span>
@@ -963,7 +1006,7 @@ Users select hotels, room types, and get a booking summary instantly.</p>
         </div>
       </div>
 
-      <!-- Web Technologies Accordion -->
+    
       <div class="accordion">
         <div class="accordion-header">
           <i class="fas fa-globe"></i> Web Technologies <span class="arrow">▼</span>
@@ -996,7 +1039,7 @@ Users select hotels, room types, and get a booking summary instantly.</p>
         </div>
       </div>
 
-      <!-- Database Accordion -->
+    
       <div class="accordion">
         <div class="accordion-header">
           <i class="fas fa-database"></i> Database Systems <span class="arrow">▼</span>
@@ -1009,7 +1052,6 @@ Users select hotels, room types, and get a booking summary instantly.</p>
         </div>
       </div>
 
-      <!-- ML/Data Science Accordion -->
 <div class="accordion">
   <div class="accordion-header">
     <i class="fas fa-robot"></i> Data Science & ML <span class="arrow">▼</span>
@@ -1046,7 +1088,7 @@ Users select hotels, room types, and get a booking summary instantly.</p>
     </div>
   </div>
 
-  <h2 class="section-heading">🌟 Professional Skills</h2>
+  <h2 class="section-heading">🌟 Soft Skills</h2>
 <ul class="plain-list">
   <li><i class="fas fa-lightbulb" style="color: #f1c40f;"></i> Problem-Solving</li>
   <li><i class="fas fa-users" style="color: #3498db;"></i> Team Leadership</li>
@@ -1138,12 +1180,6 @@ Users select hotels, room types, and get a booking summary instantly.</p>
   </div>
 </div>
 
-
-
-
-
-
-    <!-- Internships Section -->
 <div id="internships" class="section">
   <h2><i class="fas fa-briefcase"></i> Internships</h2>
 
@@ -1195,8 +1231,6 @@ Users select hotels, room types, and get a booking summary instantly.</p>
 </div>
 
 
-
-    <!-- Achievements Section -->
 <div id="achievements" class="section">
   <h2>🏆 Achievements</h2>
   <div class="achievement-list">
@@ -1204,7 +1238,122 @@ Users select hotels, room types, and get a booking summary instantly.</p>
     <p>💻🌟 Got selected and participated in Code For Good 2024 Hackathon, JP Morgan, Hyderabad</p>
     <p>🥈📚 Got a silver badge in NPTEL courses, Foundations of R Software and Ethical Hacking</p>
     <p>🥈🏅 I was in the topper 2% and got a silver badge in NPTEL course, Introduction to Internet of Things</p>
+    <div class="coding-achievements">
+  <h3 class="subsection-heading">Competitive Programming & Other Achievements</h3>
+  <div class="coding-links">
+   
+
+  <ul class="coding-details">
+      <li>    <a href="https://www.codechef.com/users/swarm_frogs_83" target="_blank" aria-label="CodeChef">
+      <img src="https://s3.amazonaws.com/codechef_shared/sites/all/themes/abessive/cc-logo.png" alt="CodeChef Logo">
+    </a>Received Gold Badge in Competitive Programming and Diamond Badge for 100+ days of coding streak on CodeChef</li>
+    <li><a href="https://www.hackerearth.com/@knsakki/" target="_blank" aria-label="HackerEarth">
+    <li><a href="https://www.hackerrank.com/profile/knsakki" target="_blank" aria-label="HackerRank">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/6/65/HackerRank_logo.png" alt="HackerRank Logo">
+    </a>Earned 5-Star(Gold) Badges in Python, Java ,SQL on HackerRank</li>
+    <li><a href="https://leetcode.com/u/SIRIAKSHAYA_KACHIBHOTLA/" target="_blank" aria-label="LeetCode">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/1/19/LeetCode_logo_black.png" alt="LeetCode Logo">
+    </a>Solved 200+ coding questions and Earned 100+ Days Badge on LeetCode</li>
+  
+      <img src="https://upload.wikimedia.org/wikipedia/commons/e/e8/HackerEarth_logo.png" alt="HackerEarth Logo">
+    </a>Earned 5-Star Badges in Python and Java, 4-Star Badge in Problem Solving on HackerEarth</li>
+  </ul>
+   
+
+
+    
   </div>
+ 
+  <h3 class="subsection-heading">✨ School & Early Achievements</h3>
+  <table class="awards-table">
+    <thead>
+      <tr>
+        <th>Organization</th>
+        <th>Achievement</th>
+        <th>Year/Rank</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>CBSE</td>
+        <td>Certificate of Merit in Mathematics and School Topper</td>
+        <td>2020</td>
+      </tr>
+      <tr>
+        <td>Suchirindia Foundation</td>
+        <td>Sir C V Raman Young Genius Award (District Rank-II)</td>
+        <td>2014</td>
+      </tr>
+      <tr>
+        <td>Unified Council</td>
+        <td>Unified Cyber Olympiad</td>
+        <td>National Rank 1593 (2014), 3003 (2016), 3159 (2017), 297 (2018), 838 (2019)</td>
+      </tr>
+      <tr>
+        <td>Ramanujan Mathematics Academy</td>
+        <td>Certificates of Merit</td>
+        <td>2014–2018</td>
+      </tr>
+      <tr>
+        <td>Science Olympiad Foundation</td>
+        <td>International Mathematics Olympiad</td>
+        <td>2014–2019</td>
+      </tr>
+      <tr>
+        <td>Society of Mathematics Olympiad</td>
+        <td>International Master Mathematics Olympiad</td>
+        <td>2015, 2016 (Rank 13), 2018 (Rank 144)</td>
+      </tr>
+      <tr>
+        <td>SIMO Education</td>
+        <td>Mathematics & English Olympiad, Aptitude Test</td>
+        <td>2015–2017</td>
+      </tr>
+      <tr>
+        <td>Silver Zone Foundation</td>
+        <td>International Olympiad of Mathematics</td>
+        <td>State Rank 121 (2016), 351 (2019)</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <h4>🎨 Fine Arts, Culture & Co-curricular</h4>
+  <table class="awards-table">
+    <thead>
+      <tr>
+        <th>Organization</th>
+        <th>Achievement</th>
+        <th>Year</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Kaladarshini Institute of Fine Arts & Culture</td>
+        <td>Successfully completed course in Keyboard (1st Class), Affiliated to Gandharva University, Maharashtra</td>
+        <td>2015</td>
+      </tr>
+      <tr>
+        <td>School Competitions</td>
+        <td>Certificate of Merit in Word Building, Story Telling, Talk A Minute, Rangoli Competitions</td>
+        <td>2014</td>
+      </tr>
+      <tr>
+        <td>Chrysallis</td>
+        <td>Certificate of Appreciation for Participation</td>
+        <td>2013–2015</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  
+  </div>
+  
+  
+</div>
+
+
 </div>
 
 
@@ -1230,6 +1379,13 @@ Users select hotels, room types, and get a booking summary instantly.</p>
           <li>📊🤖 Machine Learning</li>
           <li>🌐💻 Web Development</li>
         </ul>
+        <h2>🎯 Hobbies</h2>
+<ul>
+  <li>♟️ Playing Chess</li>
+  <li>✍️ Writing Short Stories</li>
+  <li>✏️🖼️ Making Pencil Sketches</li>
+</ul>
+
       </div>
     </div>
   </main>
@@ -1274,17 +1430,21 @@ Users select hotels, room types, and get a booking summary instantly.</p>
     header.addEventListener('click', () => {
       const accordion = header.parentElement;
 
-      // Close others
+      
       document.querySelectorAll('.accordion').forEach(a => {
         if (a !== accordion) a.classList.remove('active');
       });
 
-      // Toggle this one
+   
       accordion.classList.toggle('active');
     });
   });
 
 
   </script>
+  <footer>
+  <p>This webpage is designed by <strong>KACHIBHOTLA NAGA SAI SIRIAKSHAYA</strong>. Please feel free to take reference, but kindly don’t copy directly. 😊</p>
+</footer>
+
 </body>
 </html>
